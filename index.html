@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suvam Thapa | Dev Portfolio</title>
     
-    <!-- DevIcon CDN for Programming Icons -->
+    <!-- DevIcon CDN for Tech Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <!-- Google Material Symbols for Theme Icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <!-- Google Analytics Placeholder -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV0XM9VW5T"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -25,6 +28,17 @@
             --accent-color: #1793d1; /* Arch Blue */
             --secondary-color: #50fa7b; /* Terminal Green */
             --border-color: #333;
+            --card-hover: #252525;
+        }
+
+        body.light-mode {
+            --bg-color: #f4f7f6;
+            --terminal-bg: #ffffff;
+            --text-color: #2d3436;
+            --accent-color: #0984e3;
+            --secondary-color: #27ae60;
+            --border-color: #d1d1d1;
+            --card-hover: #f0f0f0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fira Code', monospace, 'Courier New'; }
@@ -34,12 +48,10 @@
             color: var(--text-color);
             line-height: 1.6;
             padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        .container { max-width: 900px; margin: 0 auto; }
 
         header {
             padding: 40px 0;
@@ -49,18 +61,35 @@
 
         .terminal-header {
             background: var(--terminal-bg);
-            padding: 10px;
+            padding: 12px 18px;
             border-radius: 8px 8px 0 0;
             border: 1px solid var(--border-color);
             display: flex;
-            gap: 8px;
+            justify-content: space-between;
             align-items: center;
         }
 
+        .terminal-buttons { display: flex; gap: 8px; align-items: center; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         .red { background: #ff5555; }
         .yellow { background: #f1fa8c; }
         .green { background: #50fa7b; }
+
+        #theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease, color 0.2s;
+            padding: 5px;
+        }
+        
+        #theme-toggle:hover {
+            color: var(--accent-color);
+            transform: rotate(15deg);
+        }
 
         .hero {
             background: var(--terminal-bg);
@@ -68,87 +97,58 @@
             border: 1px solid var(--border-color);
             border-top: none;
             border-radius: 0 0 8px 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         h1 { font-size: 2.5rem; color: var(--accent-color); }
         .typing { color: var(--secondary-color); font-weight: bold; }
 
         section { margin-bottom: 50px; }
-        h2 { border-left: 4px solid var(--accent-color); padding-left: 15px; margin-bottom: 25px; font-size: 1.5rem; }
+        h2 { border-left: 4px solid var(--accent-color); padding-left: 15px; margin-bottom: 25px; font-size: 1.4rem; }
 
-        /* Skills Grid Styling */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
             gap: 15px;
         }
 
         .skill-tag {
-            background: #252525;
+            background: var(--terminal-bg);
             padding: 15px;
             text-align: center;
             border-radius: 8px;
             border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+            transition: 0.3s;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 10px;
         }
 
-        .skill-tag i {
-            font-size: 2.5rem;
-            color: var(--text-color);
-            transition: color 0.3s ease;
-        }
-
-        .skill-tag span {
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
-
+        .skill-tag i { font-size: 2.2rem; }
         .skill-tag:hover {
             border-color: var(--accent-color);
-            transform: translateY(-5px);
-            background: #1e1e1e;
-            box-shadow: 0 5px 15px rgba(23, 147, 209, 0.2);
+            background: var(--card-hover);
+            transform: translateY(-3px);
         }
 
-        .skill-tag:hover i {
-            color: var(--accent-color);
-        }
-
-        /* Project Cards */
         .project-card {
             background: var(--terminal-bg);
             padding: 25px;
             margin-bottom: 20px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
-        .project-card:hover { 
-            border-color: var(--secondary-color); 
-            box-shadow: 0 5px 15px rgba(80, 250, 123, 0.1);
-        }
-        
-        .project-card h3 { color: var(--secondary-color); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;}
-        .project-card a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold;}
-        .project-card a:hover { text-decoration: underline; }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
+        .project-card:hover { border-color: var(--secondary-color); background: var(--card-hover); }
+        .project-card h3 { color: var(--secondary-color); margin-bottom: 10px; }
+        .project-card a { color: var(--accent-color); text-decoration: none; font-weight: bold; }
 
         .contact-btn {
             display: inline-block;
             background: var(--accent-color);
-            color: white;
+            color: #fff !important;
             padding: 12px 24px;
             text-decoration: none;
             border-radius: 5px;
@@ -156,7 +156,24 @@
             font-weight: bold;
             transition: opacity 0.2s;
         }
-        .contact-btn:hover { opacity: 0.9; }
+
+        footer {
+            text-align: center;
+            padding: 60px 0 40px 0;
+        }
+
+        .footer-icon {
+            font-size: 2.8rem;
+            color: var(--text-color);
+            transition: color 0.3s, transform 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .footer-icon:hover { 
+            color: var(--accent-color); 
+            transform: scale(1.1);
+        }
 
         @media (max-width: 600px) {
             h1 { font-size: 1.8rem; }
@@ -164,23 +181,26 @@
         }
     </style>
 </head>
-<body>
+<body id="body">
 
     <div class="container">
         <header>
             <div class="terminal-header">
-                <div class="dot red"></div>
-                <div class="dot yellow"></div>
-                <div class="dot green"></div>
-                <span style="font-size: 12px; margin-left: 10px; opacity: 0.5;">suvam@archlinux:~</span>
+                <div class="terminal-buttons">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                    <span style="font-size: 12px; margin-left: 10px; opacity: 0.6;">suvam@arch:~</span>
+                </div>
+                <button id="theme-toggle" title="Toggle Theme">
+                    <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
+                </button>
             </div>
             <div class="hero">
                 <h1>Hi, I'm Suvam Thapa</h1>
                 <p>> <span class="typing" id="typewriter"></span></p>
-                <p style="margin-top: 15px; opacity: 0.8;">
-                    I'm a curious developer who loves building things when I need them. 
-                    I'm passionate about <strong>Linux</strong> (Arch user btw), human behavior, and the art of 
-                    customizing everything.
+                <p style="margin-top: 15px; opacity: 0.9;">
+                    I'm a curious developer who loves building things when I need them. I'm passionate about <strong>Linux</strong> (Arch user btw), human behavior, and the art of customizing everything.
                 </p>
                 <a href="mailto:88.suvamthapa.88@gmail.com" class="contact-btn">Email Me</a>
             </div>
@@ -189,91 +209,43 @@
         <section id="skills">
             <h2>Skills & Tools</h2>
             <div class="skills-grid">
-                <!-- Skill items with DevIcons -->
-                <div class="skill-tag">
-                    <i class="devicon-html5-plain"></i>
-                    <span>HTML5</span>
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-css3-plain"></i>
-                    <span>CSS3</span>
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-javascript-plain"></i>
-                    <span>JavaScript</span>
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-typescript-plain"></i>
-                    <span>TypeScript</span>
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-react-original"></i>
-                    <span>React</span>
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-laravel-original"></i>
-                    <span>Laravel</span>
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-python-plain"></i>
-                    <span>Python</span>
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-php-plain"></i>
-                    <span>PHP</span>
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-postgresql-plain"></i>
-                    <span>PostgreSQL</span>
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-bash-plain"></i>
-                    <span>Bash/Linux</span>
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-archlinux-plain"></i>
-                    <span>Arch Linux</span>
-                </div>
-                <div class="skill-tag">
-                    <i class="devicon-pandas-plain"></i>
-                    <span>AI/ML</span>
-                </div>
+                <div class="skill-tag"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
+                <div class="skill-tag"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
+                <div class="skill-tag"><i class="devicon-react-original"></i><span>React</span></div>
+                <div class="skill-tag"><i class="devicon-laravel-original"></i><span>Laravel</span></div>
+                <div class="skill-tag"><i class="devicon-python-plain"></i><span>Python</span></div>
+                <div class="skill-tag"><i class="devicon-postgresql-plain"></i><span>PostgreSQL</span></div>
+                <div class="skill-tag"><i class="devicon-bash-plain"></i><span>Bash</span></div>
+                <div class="skill-tag"><i class="devicon-archlinux-plain"></i><span>Arch Linux</span></div>
             </div>
         </section>
 
         <section id="projects">
             <h2>Featured Projects</h2>
-            
             <div class="project-card">
-                <h3><i class="devicon-bash-plain"></i> Automated Arch Install</h3>
-                <p>A shell script project to automate the installation and configuration of Arch Linux. Minimal and efficient.</p>
+                <h3>Automated Arch Install</h3>
+                <p>A script-based project to automate the installation of Arch Linux. Born from my love for the terminal.</p>
                 <br>
                 <a href="https://github.com/Suvam-Thapa/arch_install" target="_blank">View on GitHub →</a>
             </div>
-
             <div class="project-card">
-                <h3><i class="devicon-react-original"></i> SkillRoad</h3>
-                <p>A roadmap-based website to help learners navigate their educational paths in the tech world.</p>
+                <h3>SkillRoad</h3>
+                <p>A roadmap-based website that I created for my project to navigate educational paths.</p>
                 <br>
                 <a href="https://github.com/Suvam-Thapa/SkillRoad" target="_blank">View on GitHub →</a>
             </div>
-
             <div class="project-card">
-                <h3><i class="devicon-vim-plain"></i> Dotfiles (_config)</h3>
-                <p>My personal custom setup for NeoVim and Tmux. Optimized for a terminal-centric workflow.</p>
+                <h3>Dotfiles (Nvim & Tmux)</h3>
+                <p>My personal configuration files for a highly productive terminal environment.</p>
                 <br>
                 <a href="https://github.com/Suvam-Thapa/_config" target="_blank">View on GitHub →</a>
             </div>
         </section>
 
-        <section id="about">
-            <h2>Beyond Coding</h2>
-            <p>I find <strong>psychology and human behavior</strong> fascinating. I don't just write code; I explore why we interact with technology the way we do. Whether it's flashing a new custom ROM on a phone or tweaking my window manager, I believe in making tools work for me, not the other way around.</p>
-        </section>
-
-        <footer>
-            <p>Built with <i class="devicon-javascript-plain" style="font-size: 10px;"></i> by Suvam Thapa</p>
-            <p style="margin-top: 10px;"><a href="https://github.com/Suvam-Thapa/" style="color: var(--accent-color);">GitHub Profile</a></p>
+        <footer id="footer">
+            <a href="https://github.com/Suvam-Thapa/" target="_blank" class="footer-icon">
+                <i class="devicon-github-original"></i>
+            </a>
         </footer>
     </div>
 
@@ -290,16 +262,19 @@
         }
         window.onload = typeWriter;
 
-        // Google Analytics Event Testing
-        // Tracks whenever someone clicks a project link
-        document.querySelectorAll('.project-card a').forEach(link => {
-            link.addEventListener('click', function() {
-                if(typeof gtag === 'function') {
-                    gtag('event', 'project_click', { 
-                        'project_name': this.parentElement.querySelector('h3').innerText 
-                    });
-                }
-            });
+        // Theme Toggle Logic
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.getElementById('body');
+
+        themeBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            const isLight = body.classList.contains('light-mode');
+            themeIcon.innerText = isLight ? 'dark_mode' : 'light_mode';
+            
+            if(typeof gtag === 'function') {
+                gtag('event', 'theme_switch', { 'theme_type': isLight ? 'light' : 'dark' });
+            }
         });
     </script>
 </body>
